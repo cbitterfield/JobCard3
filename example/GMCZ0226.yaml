@@ -1,0 +1,295 @@
+clipinfo:
+     type: info 
+     projectno: DEV_RUN-251
+     prime_dubya: GMCZ_Scenes
+     edgeid: GMCZ0226
+     shorttitle: Suck Fuck Cumshot
+     title: Edge Interactive Collector Scene
+     description: "Lucie Mae has a nice tribal tattoo on her lower belly, which looks great when the naked bitch sits with Kris Slater's cock buried in her lovebox. Kris loves Lucie's big butt, and when he bangs her on her belly she barely has time to pull out and shoot all over her back and round rump. "
+     keywords: Porn Star, Couples, Blowjobs, Vaginal Sex, Cumshot, Buttocks
+     productiondate: May 7, 2009
+     releasedate: July 23, 2018
+     licensor: Global Media International License. 
+     star: 
+          name: Lucie Mae
+          birthdate: May 8, 1990
+          age: 18
+          height: '5'' 3"'
+          weight: 115
+          measurements: 34B-27-36
+          hair: Bruentte
+          eyes: Green
+          skin: Caucasian
+          birthplace: Pennsylvania
+     supporting: 
+          name: Kris Slater
+     runtime: 28:25
+     comment: Combat Zone, acquired 2015 GMI License. Weight and stats are estimations.
+
+# Use validate if it is just part of some products.
+
+
+# out_dir is relative unless it starts with a / then it is absolute
+# Set name to video name (Equals directory)
+# Set the source for each video (video 1 or 2, even if the same)
+# Set Watermark = True and it will watermark the video and capture images
+# Set Capture = True and it will create Capture images (based on capture parameters)
+# If Thumbnail is set to True (Capture Images have thumbnails created)
+
+video.1: 
+     type: component
+     action: produce
+     src: C1E201-C1E260/C1E255_COMBAT_ZONE-682/HDVC226.mp4
+     watermark: true
+     set_width: 1920
+     set_height: 1080
+     set_kbps: 6000
+     name: GMCZ0226_VID
+     suffix: _final
+     ext: .mp4
+
+video.2: 
+     type: component
+     action: produce
+     src: C1E201-C1E260/C1E255_COMBAT_ZONE-682/HDVC226.mp4
+     watermark: false
+     set_width: 1280
+     set_height: 720
+     set_kbps: 1500
+     name: GMCZ0226_VID
+     suffix: _final
+     ext: .mp4
+
+capture.1: 
+     type: component
+     action: ignore
+     src: C1E201-C1E260/C1E255_COMBAT_ZONE-682/HDVC226.mp4
+     frame_every: 30
+     thumbnail: true
+     watermark: true
+     dir: images
+     suffix: _CAP
+     name: capture
+     ext: .jpg
+
+boxcover: 
+     type: component
+     action: ignore
+     src: 000-999/
+     alignment: right
+     name: GMCZ0226_IMAGES
+     dir: boxcover
+     suffix: _BoxCover
+     ext: .jpg
+     set_width: 1440
+     set_height: 2048
+
+promoimg: 
+     type: component
+     action: ignore
+     src: 000-999/
+     set_width: 
+     set_height: 
+     timed: true
+     dir: promo
+     name: promoimg
+     suffix: _promoimg
+     ext: .jpg
+
+photoset.1: 
+     type: component
+     action: ignore
+     src: 000-999/GMCZ0226_JPG/
+     set_width: 3888
+     set_height: 2592
+     timed: true
+     dir: photo
+     name: set1
+     suffix: _set1
+     ext: .jpg
+     thumbnail: true
+     watermark: true
+
+videoinfo: 
+     type: sub-component
+     action: ignore
+     name: info
+     dir: video
+
+thumbnails: 
+     type: sub-component
+     set_width: 96
+     set_height: 96
+     dir: thumbs
+     suffix: _T
+     ext: .jpg
+
+watermark: 
+     type: sub-component
+     fontsize: 97.2
+     videofontsize: 30
+     template: '$STAR $COPYRIGHT EDGE'
+     location: SouthEast
+     color: red
+     dir: watermark
+     suffix: _W
+     ext: .jpg
+scenethumb: 
+     type: component
+     action: produce
+     src: 000-999/GMCZ0226_JPG/.jpg
+     set_width: 96
+     set_height: 96
+     dir: promo2
+     prefix: GMCZ0226
+     name: promo2
+     suffix: _scene_T
+     ext: .jpg
+
+text.1: 
+     type: component
+     action: produce
+     name: GMCZ0226_BOOK
+     src: template/description_template.txt
+     suffix: _description
+     ext: .txt
+
+text.2: 
+     type: component
+     action: produce
+     src: template/ebay_template.txt
+     suffix: _ebay
+     dir: product
+     ext: .txt
+     name: GMCZ0226_PRODUCT
+
+text.0: 
+     type: component
+     action: produce
+     src: template/compliance_template.txt
+     suffix: _compliance
+     ext: .txt
+     name: GMCZ0226_BOOK
+
+text.3: 
+     type: component
+     action: produce
+     src: template/clips4sale_template.txt
+     suffix: _clips4sale
+     ext: .txt
+     name: GMCZ0226_PRODUCT
+
+compliance_2257: 
+     type: component
+     action: ignore
+     src: C16G00-C16G99/C16G00_Finished_B70901-B70907/GMCZ/GMCZ0226_2257/
+     dir: 2257
+     suffix: _2257
+     name: compliance
+
+bookimg:
+     type: component
+     action: ignore
+     src: C16G00-C16G99/C16G00_Finished_B70901-B70907/GMCZ/GMCZ0226_2257/
+
+
+clips4sale: 
+     type: product
+     action: produce
+     account: 
+     boxcover: true
+     promoimg: true
+     video.1: true
+     dir: clips4sale
+     name: clips4sale
+     text.0: true
+     text.3: true
+     module: product
+     map_video.1: clips
+     map_promoimg: clips_images
+     map_boxcover: clips_images
+     map_sceethumb: clips_images
+
+ebay: 
+     type: product
+     action: produce
+     photoset.1: true
+     scenethumb: true
+     video.1: true
+     capture: true
+     promoimg: true
+     boxcover: true
+     text.0: true
+     text.1: true
+     text.2: true
+     name: ebay
+     watermark: true
+     map_photoset: photos
+     map_promoimg: promo
+     map_photoset.1: photos/set1
+     map_capture.1: photos/set2
+     map_text.ebay: ./
+
+dvd: 
+     type: product
+     action: ignore
+     photoset.1: true
+     video.1: true
+     capture: true
+     boxcover: true
+     compliance_txt: true
+     dir: dvd
+
+picticon: 
+     type: product
+     photoset.1: true
+     video.1: true
+     thumbnails: true
+     scenethumb: true
+     text.description: exists
+     dir: web
+
+aebn: 
+     type: product
+     action: ignore
+     dir: aebn
+     video.1: true
+     boxcover: true
+     2257: true
+     map_video.1: video
+     map_promoimg: video_images
+     map_boxcover: video_images
+     map_scenethumb: video_images
+
+hotmovies: 
+     type: product
+     action: ignore
+     dir: hotmovies
+     video.1: true
+     boxcover: true
+     2257: true
+     map_video.1: video
+     map_promoimg: video_images
+     map_boxcover: video_images
+     map_scenethumb: video_images
+
+flickrocket: 
+     type: product
+     action: ignore
+     dir: flickrocket
+     video.1: true
+     boxcover: true
+     promo: true
+     map_video.1: video
+     map_promoimg: video_images
+     map_boxcover: video_images
+     map_scenethumb: video_images
+
+book: 
+     type: product
+     action: ignore
+     dir: book
+     book: true
+     pict1: true
+     pict2: true
+     description: true

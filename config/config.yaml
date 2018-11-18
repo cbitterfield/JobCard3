@@ -1,0 +1,474 @@
+Version: 1.0
+Info: Configuration File
+# All keys are lowercase
+# Values can be upper or lower case
+
+job_defaults:
+  type: default
+  # Default values for JobRun program.
+  # Can be overridden at command line -- runtime
+  # directories are volume names or absolute paths.
+  # If starts with "/", then absolute, otherwise = volume name
+  #
+  # Set Debug Level -- Can be overridden at runtime
+  debug: DEBUG
+  # noexec don't run any component or product jobs; just produce commands.
+  noexec: False
+  # Component is run the job and produce a single component.
+  # If set to None on the command line; products will be produced from a previous run.
+  # All is run all components
+  component: All
+  # Product is produce a single product; all components are run unless overridden with "None"
+  product: All
+  # Validate = run the card preparation and validate the running card
+  # Selection is True or False; normal default is False
+  validate: False
+  # Mount Point
+  # Where all of the Volumes are mounted; can not be overriden at run-time
+  mount_point: /edge
+  
+  # This section will change with some Logic to choose best CODEC
+  # Codecs seperated by commas
+
+   
+  email_alerts:
+    type: email
+    from_email: green@godge.com
+    to_email: "colin@goedge.com" 
+    mail_user: green@goedge.com
+    mail_pw: EkzXZhyU=HDWr9Xw
+    mail_host: smtpout.secureserver.net
+  
+codec:
+  type: codecs
+  action: expand
+  mp4_decode: h264
+  mp4_encode: h264_videotoolbox
+  mp4_encode_simple: mpeg4
+  mp4_encode_jpeg: mjpeg
+  mp4_accel:  cuda,videotoolbox
+  mp4_threads: '-threads 8'
+  mp4_scalefilter: scale
+  
+volumes:
+  type: volume
+  action: expand
+  queue: JobQueue
+  # Files that are temporary
+  # Product files are written here
+  # Expectation is that they will be deleted.
+  # Master Volume names; if seperated by colons volumes will be generated for all; no duplicates are allowed
+  # Volumes must be unique to each set.
+  # Volumes are named 6 alpha characters [dash] 6 alpha characters (other directories are ignored)
+  scratch: Scratch
+  deliveries: Delivery
+  assembly: Assembly
+  finished: Finished
+  source: EdgeSource01,EdgeSource02,EdgeSource03
+  templates: JobCard/templates
+  log: Logs
+  product: Output
+  run: RunDir
+  
+ 
+# This section will change with some Logic to find the file.  
+# At validation time; these search paths are replaced with absolute paths for each system. 
+# Each search path is seperated by a comma.
+# Warnings are produced if command is not found 
+programs:
+  type: program
+  action: expand
+  convert: /opt/local/bin,/usr/local/bin,/usr/bin
+  ffmpeg:  /opt/local/bin,/usr/local/bin,/usr/bin
+  identify:  /opt/local/bin,/usr/local/bin,/usr/bin
+  curl: /opt/local/bin,/usr/local/bin,/usr/bin
+  #flickrocket:  /opt/local/bin,/usr/local/bin,/usr/bin
+  ffprobe:  /opt/local/bin,/usr/local/bin,/usr/bin
+  mogrify:  /opt/local/bin,/usr/local/bin,/usr/bin
+  mkisofs:  /opt/local/bin,/usr/local/bin,/usr/bin
+  dvdauthor:  /opt/local/bin,/usr/local/bin,/usr/bin
+  # Atomic Parsely has capitals special case
+  AtomicParsley:  /opt/local/bin,/usr/local/bin,/usr/bin
+ 
+ 
+# Defaults for JobCards
+# If "REQUIRED" job will fail if not provided.
+# If "OPTIONAL" the filed will be replaced with an empty set
+# Anything else is a default value (and may show up in text files, and movie descriptions)
+clipinfo: 
+    type: info
+    projectno: REQUIRED
+    prime_dubya: REQUIRED
+    edgeid: REQUIRED
+    shorttitle: REQUIRED
+    title: REQUIRED
+    # Encapsulate with single quotes and make sure there is no (non-utf8 characters)
+    description: REQUIRED
+    keywords: REQUIRED
+    productiondate: REQUIRED
+    releasedate: REQUIRED
+    licensor: REQUIRED 
+    star: 
+       name: REQUIRED
+       birthdate: OPTIONAL
+       age: OPTIONAL
+       height: OPTIONAL
+       weight: OPTIONAL
+       # Measurements must be encapsulated with single quotes
+       measurements: OPTIONAL
+       hair: OPTIONAL
+       eyes: OPTIONAL
+       skin: OPTIONAL
+       birthplace: OPTIONAL
+    star2:
+       name: OPTIONAL
+       birthdate: OPTIONAL
+       age: OPTIONAL
+       # Measurements must be encapsulated with single quotes
+       height: OPTIONAL
+       weight: OPTIONAL
+       measurements: OPTIONAL
+       hair: OPTIONAL
+       eyes: OPTIONAL
+       skin: OPTIONAL
+       birthplace: OPTIONAL
+    supporting:
+       name: OPTIONAL
+    comment: OPTIONAL
+    
+# Component -- DEFAULTS
+# If "REQUIRED" job will fail if not provided.
+# If "OPTIONAL" the filed will be replaced with an empty set
+# Anything else is a default value (and may show up in text files, and movie descriptions)
+ 
+# Component Name video, and a 'dot' and numnber afterward for additional components. video.1, video.2, video.3 (no dot is 
+# equivilent to video.0 
+# If source is a directory, all files in that directory (Not subdirectories) will be operated on.
+# If source is a file, only that file will be operated on.
+# Type is always component for components
+
+video:
+    type: component
+    # Options are [produce | exist | ignore ]
+    action: REQUIRED
+    # Options are starts with a slash = absolute path, starts with anything else
+    # is a relative path. 
+    # Action denotes whether source volume is source or finished
+    src: REQUIRED
+    # If watermark is true, use the watermark subcomponent, can be overridden in JobCard
+    watermark: true 
+    set_width: 1920
+    set_height: 1080
+    set_kbps: 6000
+    # the destination is built directory + name + dir (if all exist)
+    # If all don't exist, then destination is built from what is provided.
+    name: OPTIOINAL
+    dir: OPTIONAL
+    suffix: _final
+    ext: .mp4
+    # Suffix Settings
+    transcode_suffix: _transcode
+    assembly_suffix: _assembly
+    intro:
+      intro_color: DarkMagenta
+      intro_font_color: White
+      intro_font_size: 48
+      intro_title_font_size: 68
+      intro_short_font_size: 88
+      intro_x: 100
+      intro_y: 100
+      intro_suffix: _intro
+      intro_ext: .mp4
+      intro_font: /edge/JobCard2/font/Arial.ttf
+ # Text Size Based on 1920x1080; automatically scaled
+
+    compliance:
+      compliance_license: Edge Interactive  
+      compliance_template: compliance_template.txt
+      compliance_color: DarkMagenta
+      compliance_font: /edge/JobCard2/font/Arial.ttf
+      compliance_text_color: White
+      compliance_text_size: 30
+      compliance_suffix: _compliance
+      compliance_ext: .mp4 
+        
+capture: 
+    type: component
+    action: REQUIRED
+    src: REQUIRED
+    frame_every: 30
+    thumbnail: true
+    watermark: true
+    dir: OPTIONAL
+    suffix: _capture
+    name: OPTIONAL
+    ext: .jpg
+
+# Note this replaces text.ebay, text.description and so on.
+# Use text.1 text.2 and etc for consitency
+# Use a "#" for a friendly commented if needed.
+# Multiple Text is a requirement.
+
+
+text:
+    type: component
+    action: produce
+    src: REQUIRED
+    suffix: OPTIONAL
+    dir: OPTIONAL
+    ext: .txt
+    name: OPTIONAL
+    
+compliance_2257:
+    type: component
+    action: REQUIRED
+    src: REQUIRED
+    dir: 2257
+    name: compliance
+    # In this component, the extension will convert the object to that format.
+    ext: OPTIONAL
+    suffix: _2257
+
+boxcover: 
+    type: component
+    action: REQUIRED
+    src: REQUIRED
+    # Title Alignment
+    alignment: center
+    name: GMCZ0022_IMAGES
+    dir: boxcover
+    suffix: _boxcover
+    ext: .jpg
+    set_width: 1024
+    set_height: 2048
+    # Additional Parameters can be overridden in JobCard
+    font: /edge/JobCard2/font/ArialBlack.ttf
+    density: 72
+    star_size: 120
+    support_size: 110
+    shorttitle_size: 140
+    edgeid_size: 30
+    partno_size: 30
+    title_size: 35
+    # North is top; don't override unless you know what you are doing.
+    title_location: North 
+    font_color: white
+    # This is created temporarily for the intermediate cover and is deleted later.
+    # Do not modify.
+    back_suffix: _source
+    
+
+promoimg: 
+    type: component
+    action: REQUIRED
+    src: REQUIRED
+    set_width: 3782
+    set_height: 
+    timed: true
+    dir: OPTIONAL
+    name: OPTIONAL
+    suffix: _promoimg
+    # Changing extension will change format 
+    ext: .jpg
+
+photoset: 
+    type: component
+    action: exists
+    src: REQUIRED
+    set_width: 3872
+    set_height: 2592
+    timed: true
+    dir: photo
+    suffix: _set
+    ext: .jpg
+    # Recommend <EDGEID>_IMAGES
+    name: OPTIONAL
+    thumbnail: true
+    watermark: true        
+
+scenethumb: 
+    type: component
+    action: REQUIRED
+    src: REQUIRED
+    set_width: 96
+    set_height: 96
+    dir: scene_thumb
+    suffix: _scene_T
+    ext: .jpg
+    # Recommend <EDGEID>_IMAGES
+    name: OPTIONAL
+    
+bookimg:
+    type: component
+    action: REQUIRED
+    src: REQUIRED
+    dir: OPTIONAL
+    name: OPTIONAL
+    suffix: _BOOKIMG
+    ext: .jpg
+    set_width: 3872
+    set_height: 2592
+    timed: true
+            
+    
+    
+    
+# Subcomponents
+# These values can be overridden in JobCard.
+
+thumbnails: 
+    type: sub-component
+    set_width: 96
+    set_height: 96
+    dir: thumbs
+    suffix: _T
+    ext: .jpg
+    
+watermark:
+    type: sub-component
+    fontsize: 100
+    videofontsize: 30
+    template: '$STAR $COPYRIGHT EDGE'
+    # Location of watermark
+    location: SouthEast
+    dir: watermark
+    name: OPTIONAL
+    color: purple
+    suffix: _W  
+    ext: .jpg
+    font: /Library/Fonts/Skia.ttf
+    copysymbol: 'C'
+
+# Mapping
+# A map copies the files from the directory structure of the component to the directory structure of the product
+# 
+
+    
+# Product Defaults
+clips4sale:
+    # These values belong in JobCard 
+    type: product
+    action: ignore
+    account: Edgeinter11
+    boxcover: True
+    promoimg: True 
+    video.1: True
+    name: clips4sale
+    text.clips4sale: true
+    # these values are default for all interations of the component
+    # They can be placed in the JobCard to override defaults
+    # Deconfliction occurs via the interation being part of the filename
+    map_video: clips
+    map_promoimg: clip_images
+    map_boxcover: clip_images
+    map_scenethumb: clip_images
+    # Values not to be placed in JobCard
+    ftpsite: ftp.clips4sale.com
+    # Username password sets 
+    Edgeinter11: PornStars1
+    Edgeinter12: PornStars1
+    edge002: AnotherPassword
+    edge003: YetAnotherPassword
+
+ebay: 
+    type: product
+    action: ignore
+    photoset.1: true
+    scenethumb: true
+    video.1: true
+    capture.1: true
+    promoimg: true
+    boxcover: true
+    text.description: true
+    text.ebay: true
+    name: ebay
+    # these values are default for all interations of the component
+    # They can be placed in the JobCard to override defaults
+    # Deconfliction occurs via the interation being part of the filename
+    map_photoset: photos
+    map_promoimg: promo
+    map_photoset: photos/set1
+    map_capture: photos/capture
+    map_text.1: ./
+    
+
+dvd: 
+    type: product
+    action: ignore
+    photoset.1: true
+    video.1: true
+    capture: true
+    boxcover: true
+    compliance_txt: true
+    dir: dvd
+    
+
+picticon: 
+    type: product
+    action: ignore
+    photoset1: true
+    video.1: true
+    thumbnails: true
+    scenethumb: true
+    text.2: exists
+    dir: web
+
+aebn: 
+    type: product
+    action: ignore
+    dir: aebn
+    video.1: true
+    boxcover: true
+    compliance_2257: true
+    # these values are default for all interations of the component
+    # They can be placed in the JobCard to override defaults
+    # Deconfliction occurs via the interation being part of the filename
+    map_video: video
+    map_promoimg: video_images
+    map_boxcover: video_images
+    map_scenethumb: video_images
+    
+
+hotmovies: 
+    type: product
+    action: ignore
+    dir: hotmovies
+    video.1: true
+    boxcover: true
+    compliance_2257: true
+    map_video.1: video
+    map_promoimg: video_images
+    map_boxcover: video_images
+    map_scenethumb: video_images
+
+flickrocket: 
+    type: product
+    action: ignore
+    dir: flickrocket
+    video.1: true
+    boxcover: true
+    promo: true
+    map_video1: video
+    map_promoimg: video_images
+    map_boxcover: video_images
+    map_scenethumb: video_images
+    # Do not put in JobCard
+    username: username
+    password: password
+    module: product
+
+book: 
+    type: product
+    action: ignore
+    dir: book
+    book: true
+    bookimg: true
+    text.1: true
+    
+manyvids:
+    type: product
+    action: ignore
+    video.1: true
+    map_video: video
+    
+    

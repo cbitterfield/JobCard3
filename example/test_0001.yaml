@@ -1,0 +1,306 @@
+# JOB CARD
+clipinfo: 
+     projectno: Test01
+     prime_dubya: GMCZ_Scenes
+     edgeid: GMCZ0022
+     shorttitle: Suck Fuck Anal A2M Facial
+     title: Edge Interactive Collector Scene
+     description: Romanian Donna Bell started out shooting masturbation, toy and lesbo work but quickly graduated to sucking and fucking cocks. Here she is breaking through into in anal, A2M, and eventually DP roles. Today she runs with Choky Ice as the Spanish Maid with white hose and heels.
+     keywords: Porn Stars, Hetrosexual, Blowjobs, Finger Fucking, Vaginal Sex, Anal, A2M, Facials, Hose, Uniforms
+     productiondate: June 1, 2010
+     releasedate: October 6, 2017
+     licensor: Global Media International. 
+     star: 
+        name: Donna Bell
+        birthdate: August 11, 1988
+        age: 21
+        height: '5'' 7"'
+        weight: 105
+        measurements: 36C-27-37
+        hair: Blonde`
+        eyes: Blue
+        skin: Caucasian
+        birthplace: Constanta, Romania
+     star2:
+        name: Donna Bell
+        birthdate: August 11, 1988
+        age: 21
+        height: '5'' 7"'
+        weight: 105
+        measurements: 36C-27-37
+        hair: Blonde`
+        eyes: Blue
+        skin: Caucasian
+        birthplace: Constanta, Romania
+     supporting:
+        name: Choky Ice
+     comment: Combat Zone, acquired 2015 GMI License. Stats trimmed from Iafd 38D-27-38 to 36C-27-37
+
+# Components are processed in alphabetical order
+# Components that might need to be multiples are seperated by {dot} {number}
+
+video.1:
+     type: component
+     action: produce
+     src: C1E253-C1E258/C1E255_COMBAT_ZONE-682/HDVC022.mp4
+     watermark: true 
+     set_width: 1920
+     set_height: 1080
+     set_kbps: 6000
+     name: GMCZ0022_VID
+     suffix: _final
+     ext: .mp4
+     
+video.2:
+     type: component
+     action: produce
+     src: C1E253-C1E258/C1E255_COMBAT_ZONE-682/HDVC022.mp4
+     watermark: false 
+     set_width: 1280
+     set_height: 720
+     set_kbps: 1500
+     suffix: _final
+     name: GMCZ0022_VID
+     ext: .mp4
+          
+capture.1: 
+     type: component
+     action: produce
+     src: C1E253-C1E258/C1E255_COMBAT_ZONE-682/HDVC022.mp4
+     frame_every: 30
+     thumbnail: true
+     watermark: true
+     dir: images
+     suffix: _capture
+     name: GMCZ0022_VID
+     ext: .jpg
+
+
+bookimg.1:
+     type: component
+     action: ignore
+     src: C1E253-C1E258/C1E255_COMBAT_ZONE-682/BoxCovers/GMCZ0022_cover_3724x5296.jpg
+
+     
+boxcover.1: 
+     type: component
+     action: produce
+     src: C1E253-C1E258/C1E255_COMBAT_ZONE-682/BoxCovers/GMCZ0022_DONNA_BELL__CHOKY_ICE_22.jpg
+     alignment: center
+     name: GMCZ0022_IMAGES
+     dir: boxcover
+     suffix: _boxcover
+     ext: .jpg
+     set_width: 1024
+     set_height: 2048
+     
+
+promoimg: 
+     type: component
+     action: produce
+     src: C1E253-C1E258/C1E255_COMBAT_ZONE-682/Promos/GMCZ0022_Samples
+     set_width: 3782
+     set_height: 
+     timed: true
+     dir: promo
+     name: GMCZ0022_IMAGES
+     suffix: _promoimg 
+     ext: .jpg
+
+photoset.1: 
+     type: component
+     action: exists
+     src: C1E253-C1E258/C1E255_COMBAT_ZONE-682/photoset1
+     set_width: 3872
+     set_height: 2592
+     timed: true
+     dir: photo
+     suffix: _set
+     ext: .jpg
+     name: GMCZ0022_IMAGES
+     thumbnail: true
+     watermark: true
+ 
+videoinfo:
+     type: sub-component
+     action: ignore
+     name: info 
+     dir: video
+
+thumbnails: 
+     type: sub-component
+     set_width: 96
+     set_height: 96
+     dir: thumbs
+     suffix: _T
+     ext: .jpg
+     
+watermark:
+     type: sub-component
+     fontsize: 100
+     videofontsize: 30
+     template: '$STAR $COPYRIGHT EDGE'
+     location: SouthEast
+     dir: watermark
+     color: purple
+     suffix: _W  
+     ext: .jpg   
+
+scenethumb: 
+     type: component
+     action: produce
+     src: C1E253-C1E258/C1E255_COMBAT_ZONE-682/scenethumb/GMCZ0022_DONNA_BELL__CHOKY_ICE_32.jpg
+     set_width: 96
+     set_height: 96
+     dir: promo2
+     suffix: _scene_T
+     prefix: edge0022
+     ext: .jpg
+     name: GMCZ0022_IMAGES   
+
+text.description: 
+     type: component
+     action: produce
+     name: GMCZ0022_BOOK
+     src:   template/description_template.txt
+     suffix: _description
+     ext: .txt
+
+
+text.ebay: 
+     type: component
+     action: produce
+     src: template/ebay_template.txt
+     suffix: _ebay
+     dir: product
+     ext: .txt
+     name: GMCZ0022_PRODUCT
+
+text.compliance: 
+     type: component
+     action: produce
+     src: template/compliance_template.txt
+     suffix: _compliance
+     ext: .txt
+     name: GMCZ0022_BOOK
+
+text.clips4sale:
+     type: component
+     action: produce
+     src: template/clips4sale_template.txt
+     suffix: _clips4sale
+     ext: .txt 
+     name: GMCZ0022_PRODUCT
+
+    
+compliance_2257:
+    type: component
+    action: ignore
+    src: C16F01-C16G00/C16G00_Finished_B70901-B70907/GMCZ/GMCZ0022_2257/
+    dir: 2257
+    name: compliance      
+
+
+# Product, if the product is here it will be produced.
+# Set components as needed true or false
+
+clips4sale: 
+     type: product
+     action: produce
+     account: Edgeinter11
+     boxcover: True
+     promoimg: True 
+     video.1: True
+     name: clips4sale
+     text.clips4sale: true
+     map_video.1: clips
+     map_promoimg: clip_images
+     map_boxcover: clip_images
+     map_scenethumb: clip_images
+     
+
+ebay: 
+     type: product
+     action: produce
+     photoset.1: true
+     scenethumb: true
+     video.1: true
+     capture.1: true
+     promoimg: true
+     boxcover: true
+     text.description: true
+     text.ebay: true
+     name: ebay
+     map_photoset: photos
+     map_promoimg: promo
+     map_photoset.1: photos/set1
+     map_capture.1: photos/capture
+     map_text.ebay: ./
+     
+
+dvd: 
+     type: product
+     action: ignore
+     photoset.1: true
+     video.1: true
+     capture: true
+     boxcover: true
+     compliance_txt: true
+     dir: dvd
+     
+
+picticon: 
+     type: product
+     photoset1: true
+     video.1: true
+     thumbnails: true
+     scenethumb: true
+     text.description: exists
+     dir: web
+
+aebn: 
+     type: product
+     action: ignore
+     dir: aebn
+     video.1: true
+     boxcover: true
+     2257: true
+     map_video1: video
+     map_promoimg: video_images
+     map_boxcover: video_images
+     map_scenethumb: video_images
+     
+
+hotmovies: 
+     type: product
+     action: ignore
+     dir: hotmovies
+     video.1: true
+     boxcover: true
+     2257: true
+     map_video1: video
+     map_promoimg: video_images
+     map_boxcover: video_images
+     map_scenethumb: video_images
+
+flickrocket: 
+     type: product
+     action: ignore
+     dir: flickrocket
+     video.1: true
+     boxcover: true
+     promo: true
+     map_video1: video
+     map_promoimg: video_images
+     map_boxcover: video_images
+     map_scenethumb: video_images
+
+book: 
+     type: product
+     action: ignore
+     dir: book
+     book: true
+     pict1: true
+     pict2: true
+     description: true
+
